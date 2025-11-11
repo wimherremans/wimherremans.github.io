@@ -1,0 +1,71 @@
+url: "http://localhost" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+title: "Test Jekyll on GitHub Pages" # the name of your site, e.g. ACME Corp.
+safe: true
+ignore_theme_config: true
+timezone: "Europe/Brussels"
+lang: "nl-BE"
+author: "Wim Herremans"
+#
+# PERMALINK kan bepaald worden op niveau van de site, van de collections en
+# op niveau van de webpagina's in de front matter.
+# permalink bepaalt de mappenstructuur van de gegenereerde website (_site/).
+# De mappenstructuur bepaalt impliciet de URLs van de webpagina's.
+# Zie https://jekyllrb.com/docs/permalinks/ voor meer uitleg.
+#
+# Ik heb hier gekozen voor een definitie op niveau van de page collections.
+# permalink: op niveau van de site heb ik niet gebruikt.
+#
+# Hier worden page COLLECTIONS gedefinieerd. Dat zijn webpagina's waarvan de
+# bronbestanden in een submap worden geplaatst en die op een of andere manier
+# samenhoren. Voor de hier gedefinieerde collections moeten de bronbestanden
+# geschreven worden in de submappen "_activiteiten", "_allerlei", "_posts" en
+# "_drafts" en "_ontwikkeling"
+#
+# Belangrijke opmerking: de "/" aan het einde van de permalink definitie is
+# belangrijk. Als die ontbreekt moet de url wel de extensie ".html" bevatten.
+collections:
+    ontwikkeling:
+        output: true
+        permalink: /:collection/:name/
+    posts:
+        output: true
+        permalink: /:collection/:name/
+    drafts:
+        output: false
+        permalink: /:collection/:name/
+#
+# DEFAULTS wordt gebruikt om front matter data toe te kennen aan statische bestanden
+# zoals documenten en foto's zodat ze kunnen worden in de Liquid template
+# langauge om automatsche html code te genereren.
+#
+defaults:
+  - scope:
+        path: "assets/bijlagen/posts/2025-10-23-somme/album"
+    values:
+        album: "2025-10-23-somme"
+#
+# MENU
+#   Een array van menu-items.
+#   "label" is de string die getoond wordt voor het menu-item
+#   "url" is de url waar het menu-item naar wijst
+#   "children" is de lijst van de sub-menu-items 
+#   Als "children" niet leeg is, wordt het hoofd-menu-item geen verwijzing
+#   naar een webpagina, maar wordt het een knop om een dropdown menu te openen.
+#
+menu:
+  - label: "Home"
+    url: "/"
+    children: ""
+  - label: "Blog"
+    url: "/verslagen.html"
+    children: ""
+  - label: "Ontwikkeling"
+    url: ""
+    children:
+      - label: "Index"
+        url: "/ontwikkeling/index"
+      - label: "Over deze website"
+        url: "/ontwikkeling/over-website"
+      - label: "Test Liquid"
+        url: "/ontwikkeling/test-liquid"

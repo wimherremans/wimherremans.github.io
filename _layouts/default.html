@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" -}}">
+<head>
+    {% include meta.html -%}
+</head>
+    <body>
+        <div id="whole-page">
+            <header>
+                {% include header.html -%}
+                {% include nav.html -%}
+            </header>
+            <main id="page-content">
+                <h2 style="text-align: center;">{{ page.title -}}</h2>
+                {% if page.auteur != "" -%}
+                    <p style="font-size: small;">{{ page.auteur -}} - {{ page.date | date: "%d %B %Y" -}}</p>
+                {% endif -%}
+                {{ content -}}
+            </main>
+            <footer>
+                {% include footer.html -%}
+            </footer>
+        </div>
+  </body>
+</html>
