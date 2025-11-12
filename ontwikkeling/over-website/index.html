@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Wim Herremans" >
+<meta name="date" content="2025-11-08T10:09:10+0100" >
+<meta name="description" content="Test Jekyll on GitHub Pages">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Test Jekyll on GitHub Pages</title>
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="icon" type="image/png" href="/assets/bijlagen/favicon.ico">
+</head>
+    <body>
+        <div id="whole-page">
+            <header>
+                <div id="header-row">
+    <img src="/assets/bijlagen/jekyll-logo" alt="Jekyll Logo" id="logo">
+    <h1 style="margin-left: 1rem;"><a href="/">Test Jekyll on GitHub Pages</a></h1>
+</div>
+<nav class="hornav">
+    <a href="/" class="hor-item">Home</a>
+        <a href="/verslagen.html" class="hor-item">Blog</a>
+        <div class="dropdown">
+                <button class="hor-item dropbtn"
+                onclick="document.getElementById('dropdown-Ontwikkeling').classList.toggle('show');">
+                    Ontwikkeling</button>
+                <div id="dropdown-Ontwikkeling" class="dropdown-content">
+                    <a href="/ontwikkeling/index" class="vert-item" >Index</a>
+                    <a href="/ontwikkeling/over-website" class="vert-item" >Over deze website</a>
+                    <a href="/ontwikkeling/test-liquid" class="vert-item" >Test Liquid</a>
+                    </div>
+            </div>
+        </nav>
+
+<script type="text/javascript" >
+// Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+      }
+    }
+</script></header>
+            <main id="page-content">
+                <h2 style="text-align: center;">Over de ontwikkeling van deze website</h2>
+                <p style="font-size: small;">Wim Herremans- 12 November 2025</p>
+                <div id="inhoud-ontwikkeling">
+    <h3 id="inhoud">Inhoudstafel</h3>
+    <p><a href="#jekyll">Jekyll</a></p>
+    <p><a href="#mappenstructuur">Mappenstructuur</a></p>
+    <p><a href="#layout-website">De layout van deze website</a></p>
+    <p><a href="#foto-docs">Foto’s en documenten</a></p>
+    <p><a href="#foto-albums">Fotoalbums</a></p>
+    <p><a href="#nieuwsbrieven">Nieuwsbrieven</a></p>
+    <p><a href="#navigatie-menu">Navigatiemenu</a></p>
+    <p><a href="#relative-url"><em>baseurl</em> en <em>relative_url</em></a></p>
+    <p><a href="#permalink">Permalink</a></p>
+    <p><a href="#verslagen">Verslagen</a></p>
+</div>
+
+<h3 id="jekyll">Jekyll</h3>
+
+<p>Deze website is ontwikkeld met
+<a href="https://jekyllrb.com/" target="_blank">Jekyll</a>. Dat is een
+gereedschap dat een statische website genereert. Dat wil zeggen dat de html van
+webpagina’s die door de webserver naar de browser gestuurd worden niet door de
+webserver worden gegenereerd. De html van de webpagina’s wordt op de computer
+van de ontwikkelaar gegenereerd met Jekyll als gereedschap en vervolgens
+overgestuurd naar de webserver, die ze niet verandert of interpreteert.</p>
+
+<p>Jekyll heeft een aantal interessante eigenschappen die het mogelijk maken een
+website met meerder pagina’s te ontwerpen die toch een grote uniformiteit
+vertonen zonder dat de ontwikkelaar html-code moet dupliceren. In het bijzonder
+maakt Jekyll het gemakkelijk ervoor te zorgen dat alle pagina’s dezelfde header,
+navigatiemenu en footer hebben. Als een van deze elementen moet gewijzigd
+worden, moet die wijziging maar op één plaats gebeuren.</p>
+
+<p>De volgende kenmerken van Jekyll maken dat mogelijk.</p>
+
+<ul>
+  <li>
+    <p>Jekyll maakt het mogelijk sjablonen voor webpagina’s te ontwerpen die vervolgens
+worden toegepast op de te ontwerpen webpagina’s. Jekyll duidt die sjablonen
+aan met de term <em>layout</em>.</p>
+  </li>
+  <li>
+    <p>Jekyll biedt de mogelijkheid om html fragmenten te includeren in webpagina’s.
+Daarbij is het zelfs mogelijk parameters door te geven die het gedrag van die
+html fragmenten beïnvloedt. Voorbeelden waarvoor zo’n html fragmenten kunnen
+gebruikt worden:</p>
+
+    <ul>
+      <li>
+        <p>de header van de webpagina;</p>
+      </li>
+      <li>
+        <p>de footer van de webpagina;</p>
+      </li>
+      <li>
+        <p>het navigatiemenu;</p>
+      </li>
+      <li>
+        <p>een fotoalbum.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Een webpagina kan rechtstreeks in html ontworpen worden, maar ook in
+ <a href="https://www.markdownguide.org/" target="_blank">Markdown</a>, een
+opmaaktaal die veel eenvoudiger is dan html en dus ook veel minder mogelijkheden
+heeft, maar die voor tekst en tabellen zeer goed werkt. Deze webpagina is bv.
+volledig in markdown geschreven. Afbeeldingen in een webpagina brengen kan wel,
+maar dan heb je geen controle over de positionering en afmetingen van de
+afbeelding. Dat is wel op te lossen door de afbeelding in te voegen via een
+voorgedefinieerde layout.</p>
+  </li>
+  <li>
+    <p>Het bronbestand voor een webpagina, html of markdown, bevat in het begin gegevens
+die <em>front matter</em> genoemd worden. Dergelijke gegevens zijn o.a.:</p>
+
+    <ul>
+      <li>
+        <p>title: de titel van de webpagina;</p>
+      </li>
+      <li>
+        <p>layout: het sjabloon dat bij het genereren van de pagina zal worden toegepast;</p>
+      </li>
+      <li>
+        <p>foto: een pad naar een foto die door het sjabloon in de gegenereerde pagina
+zal worden geplaatst:</p>
+      </li>
+      <li>
+        <p>album: de naam van een fotalbum dat kan worden ingevoegd in de webpagina.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Jekyll ondersteunt een <em>sjabloon taal</em> die
+ <a href="https://shopify.github.io/liquid/" target="_blank">Liquid</a>
+wordt genoemd. Dat is een taal die in layouts, fragmenten en webpagina’s
+kan gebruikt worden om html te genereren afhankelijk van de site configuratie
+(gedefinieerd in _config.yml, zie verder) en van de <em>front matter</em> gegevens.</p>
+  </li>
+</ul>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="mappenstructuur">De mappenstructuur</h3>
+
+<p>Voor deze website is de volgende mappenstructuur gebruikt.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── _config.yml  # configuratie van deze website
+├── _home
+|     ├── index.html # home page
+|     ├── maandagenda.md
+|     ├── terugkerend.md
+|     └── nieuwsbrieven.html
+├── _activiteiten
+|     ├── biljart.md
+|     ├── bridge.md
+|     ├── petanque.html
+|     ├── plezier-fietsers.md
+|     ├── sportieve-fietsers.md
+|     └── hobby-handwerk.md
+├── _allerlei
+|     ├── geschiedenis.md
+|     ├── privay.md
+|     ├── verwijzingen.html
+|     └── over-website.md  # pagina die je nu leest
+├── assets
+|     ├── bijlagen  # foto's, documenten, albums die getoond worden in wepagina's
+|     |     ├── activiteiten
+|     |     ├── allerlei
+|     |     ├── home
+|     |     └── nieuwsbrieven
+|     └── css  # stylesheets
+├── _data  # niet gebruikt
+├── _drafts
+│       └── contact.html
+├── _includes
+|     ├── meta.html
+│     ├── header.html
+│     ├── nav.html
+|     ├── footer.html
+|     └── fotoalbum.html
+├── _layouts
+│     └── default.html
+├── _ontwikkeling
+|     ├── index.html
+|     ├── over-website.md
+|     └── test.html
+├── _posts  # hier komen de verslagen. Zie verder.
+│     ├── 2025-10-23-somme.html
+│     ├── 2025-10-25-video-elewijt.html
+│     └── 2025-10-28-verslag-fietstocht.html
+├── _sass # niet gebruikt bij deze website: alle scss in assets
+└── _site # hier komt de gegenereerde website
+</code></pre></div></div>
+
+<p>Wat je hier ziet is de mappenstructuur van alles wat Jekyll gebruikt als
+bron om de website te genereren. De enige uitzondering daarop is de map “_site”.
+Dat is geen bronmap, maar de map waarin Jekyll de bestanden wegschrijft die
+moeten worden opgeladen naar de webserver. Al de rest blijft op de computer
+van de ontwikkelaar.</p>
+
+<p><strong>Nota</strong>:</p>
+
+<ol>
+  <li>
+    <p><em>Dit betekent wel dat snel een bestandje op de webserver aanpassen
+om iets te corrigeren niet meer kan omdat daarmee de bron niet gecorrigeerd is
+en dus bij een volgende uitvoering van Jekyll zal worden tenietgedaan. Alle
+correcties moeten gebeuren in de bronbestanden. In sommige gevallen, bv. bij
+een update in header, footer of menu zal dat betekenen dat je de volledige
+website (map “_site”) terug moet opladen.</em></p>
+  </li>
+  <li>
+    <p><em>Wat wel kan is dat je bv. één bronbestand bijwerkt, Jekyll opnieuw laat
+lopen en vervolgens alleen de overeenkomstige webpagina overstuurt naar de
+webserver.</em></p>
+  </li>
+</ol>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="layout-website">De layout van deze website</h3>
+
+<p>De layout van de webpagina’s van deze website zijn volledig gedefinieerd in het
+sjabloon <em>_layout/default.html</em>.</p>
+
+<p>Hieronder zie je de inhoud van <em>default.html</em>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="{{ site.lang | default: "en-US" -}}"&gt;
+&lt;head&gt;
+    {% include meta.html -%}
+&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="whole-page"&gt;
+            &lt;header&gt;
+                {% include header.html -%}
+                {% include nav.html -%}
+            &lt;/header&gt;
+            &lt;main id="page-content"&gt;
+                &lt;h2 style="text-align: center;"&gt;{{ page.title -}}&lt;/h2&gt;
+                {% if page.auteur != "" -%}
+                    &lt;p style="font-size: small;"&gt;{{ page.auteur -}} - {{ page.date | date: "%d %B %Y" -}}&lt;/p&gt;
+                {% endif -%}
+                {% if page.foto != "" -%}
+                    &lt;img src="{{ page.foto | relative_url -}}" alt="Foto niet gevonden" class="inline-left"&gt;
+                {% endif -%}
+                {{ content -}}
+            &lt;/main&gt;
+            &lt;footer&gt;
+                {% include footer.html -%}
+            &lt;/footer&gt;
+        &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div></div>
+<p>Alles wat tussen accolades met “%” staat is programma code in de <em>Liquid</em> taal
+die wordt uitgevoerd als Jekyll de website bouwt.</p>
+
+<p>Alles wat tussen dubbele accolades staat wordt bij het bouwprocess vervangen
+door de waarde van de variabele die tussen de accolades staat. We zien hier
+meerdere voorbeelden van variabelen:</p>
+
+<ul>
+  <li>
+    <p><em>content</em> is de variable die de inhoud van het bronbestand van de webpagina
+bevat nadat die door Jekyll is omgezet naar zuivere html. D.w.z. markdown
+is omgezet naar html en alle Liquid code die eventueel in het bronbestand
+staat is uitgevoerd.</p>
+  </li>
+  <li>
+    <p><em>site.lang</em> is een configuatie parameter die kan ingesteld worden in het
+bestand <em>_config.yml</em>.</p>
+  </li>
+  <li>
+    <p><em>page.foto</em> krijgt een waarde in de <em>front matter</em> van de bron van de pagina.
+Hier is bv. de front matter van de pagina voor de biljart activiteit. De front
+matter is te vinden in de eerste lijnen van het bronbestand. Begin en einde
+worden aangeduid met “- - -“.</p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      ---
+      layout: default
+      title: "Biljart"
+      foto: "/assets/bijlagen/activiteiten/biljart/OkraBiljart_02.jpg"
+      ---
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Ook <em>page.title</em> krijgt een waarde in de <em>front matter</em> van de bron van
+de pagina.</p>
+  </li>
+  <li>
+    <p><em>page.auteur</em> is alleen bedoeld voor “posts” en krijgt ook een waarde
+in de front matter. De default is “” voor alle pagina’s en “onbekend”
+voor posts.</p>
+  </li>
+</ul>
+
+<p>Merk op dat de default layout de mogelijkheid biedt om een foto in de webpagina
+te plaatsen door alleen maar de <em>foto</em> front matter parameter naar een foto
+te laten verwijzen. De positionering van de foto wordt door de layout bepaald.
+Als de webpagina geen extra foto’s nodig heeft, kan de webpagina volledig
+in markdown geschreven worden.</p>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="foto-docs">Foto’s en documenten</h3>
+
+<p>Alle foto’s en documenten zijn terug te vinden onder de map assets/bijlagen
+en submappen daarvan.</p>
+
+<p>Ik heb ernaar gestreefd een duidelijk verband te behouden tussen de locatie
+van de bronbestanden van de webpagina’s en de locatie van hun bijbehorende
+foto’s en documenten. Dat is best uit te leggen aan de hand van het voorbeeld
+ van de foto’s die worden weergeven op de pagina over petanque.</p>
+
+<p>De bron van de pagina over petanque bevindt zich op:</p>
+
+<p>/_activiteiten/petanque.html</p>
+
+<p>De bijhorende foto’s heb ik gezet op</p>
+
+<p>/assets/bijlagen/activiteiten/petanque</p>
+
+<p>Daarin staat de foto die op de pagina getoond wordt, maar ook nog een submap
+ met de naam “album” die 9 foto’s bevat die als een album getoond worden
+ op de pagina.</p>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="foto-albums">Fotoalbums</h3>
+
+<p>Er is een speciaal html fragment (_includes/fotoalbum.html) gemaakt voor deze
+ website. Deze include kan in een webpagina worden opgeroepen. Hieronder zie je
+ een voorbeeld uit petanque.html:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {% include fotoalbum.html album = "petanque" %}
+</code></pre></div></div>
+<p>Jekyll toont op die plaats alle foto’s van het album “petanque” in een raster
+van 3 kolommen en zoveel rijen als nodig. Elke foto is aanklikbaar voor een
+vergrootte weergave.</p>
+
+<p>Wat nog ontbreekt is hoe we Jekyll wijsmaken waar de foto’s van het album
+petanque staan.</p>
+
+<p>Dat doen we via het configuratiebestand _config.yml. We kunnen daarin “default”
+frontmatter parameters definiëren voor bestanden, ook voor bestanden zoals
+foto’s of documenten die zelf geen front matter kunnen bevatten omdat we er geen
+tekst kunnen in schrijven.</p>
+
+<p>Hieronder zie je hoe in de <em>defaults</em> in _config.yml 2 albums worden gedefinieerd.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults:
+  - scope:
+        path: "assets/bijlagen/posts/2025-10-23-somme/album"
+    values:
+        album: "2025-10-23-somme"
+  - scope:
+        path: "assets/bijlagen/activiteiten/petanque/album"
+    values:
+        album: "petanque"
+
+</code></pre></div></div>
+
+<p>Daarin zie je dat alle bestanden in de map “assets/bijlagen/activiteiten/petanque/album”
+een front matter gegeven album: “petanque” krijgen. Dat biedt ons de mogelijkheid
+alle foto’s van het album in een lijst te zetten waarmee Jekyll dan html code
+kan genereren om het album te tonen. Zie hieronder de bron van de include
+fotoalbum.html</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div class="fotoalbum"&gt;
+    {% assign album-images = site.static_files | where: "album", include.album %}
+    {% for myimage in album-images %}
+        &lt;a href="{{ myimage.path }}" target="_self"&gt; &lt;img src="{{ myimage.path }}" alt="{{ myimage.name }}"&gt;&lt;/a&gt;
+    {% endfor %}
+&lt;/div&gt;
+</code></pre></div></div>
+
+<p><em>include.album</em> is de parameter die bij de oproep vanuit petanque.html de waarde
+“petanque” krijgt.</p>
+
+<p>Het resultaat kun je zien in de webpagina Activiteiten → Petanque.</p>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="nieuwsbrieven">Nieuwsbrieven</h3>
+
+<p>De webpagina “Nieuwsbrieven” wordt automatisch gegenereerd aan de hand van
+de bestanden die worden opgeslagen in de map “/assets/bijlagen/nieuwsbrieven”.</p>
+
+<p>Daaronder vind je een map voor dit jaar en vorig jaar.</p>
+
+<p>In elke jaarmap vind je een map <em>jaar</em> en een map <em>maanden</em>.</p>
+
+<p>In de map <em>jaar</em> vind je juist één PDF met het jaarprogramma.</p>
+
+<p>In de map <em>maanden</em> vind je de maandelijkse nieuwsbrieven.</p>
+
+<p>Het programma in de nieuwsbrieven webpagina toont de jaarprogramma’s van het
+lopende en het vorige jaar. Het steunt op de naamgeving die tot
+nu toe gebruikt werd voor de maandelijkse nieuwsbrieven:</p>
+
+<ol>
+  <li>OKRANieuwsFebruari2025.pdf</li>
+  <li>OKRANieuwsMaart2025.pdf</li>
+  <li>OKRANieuwsApril2025.pdf</li>
+  <li>OKRANieursMei2025.pdf</li>
+  <li>OKRANieuwsJuni2025.pdf</li>
+  <li>OKRANieuwsZomer2025.pdf</li>
+  <li>OKRANieuwsSeptember2025.pdf</li>
+  <li>OKRANieuwsOktober2025.pdf</li>
+  <li>OKRANieuwsNovemer2025.pdf</li>
+  <li>OKRANieuwsWinter2025.pdf</li>
+</ol>
+
+<p>Zolang deze naamgeving wordt aangehouden kan een nieuwsbrief op de website
+worden toegevoegd door alleen maar de PDF in de juiste map te plaatsen en
+Jekyll opnieuw laten lopen. Daarna de gegeneerde webpagina “_site/nieuwsbrieven.html”
+opladen naar de webserver.</p>
+
+<p>Het programma in de nieuwsbrieven webpagina geeft alleen de nieuwsbrieven van de
+laatste 2 jaren. Het programma steunt ook op de instellingen in “_config.yml”. 
+Bij “defaults” vind je daarin het volgende:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults:
+  - scope:
+        path: "assets/bijlagen/home/nieuwsbrieven/2025/jaar"
+    values:
+        brief: "dit-jaar"
+  - scope:
+        path: "assets/bijlagen/home/nieuwsbrieven/2024/jaar"
+    values:
+        brief: "vorig-jaar"
+  - scope:
+        path: "assets/bijlagen/home/nieuwsbrieven/2025/maanden"
+    values:
+        brief: "maand-dit-jaar"
+  - scope:
+        path: "assets/bijlagen/home/nieuwsbrieven/2024/maanden"
+    values:
+        brief: "maand-vorig-jaar"
+</code></pre></div></div>
+
+<p>Als in het begin van een nieuw jaar de eerste maandelijkse nieuwsbrief wordt
+gepubliceerd moet het “_config.yml” bestand aangepast worden. Bv. bij het begin
+van 2026 wordt 2026 “dit-jaar” en 2025 “vorig-jaar”. De wijziging beperkt zich
+dus tot 2025 overschrijven met 2026 en 2024 overschrijven met 2025.</p>
+
+<p>De nieuwsbrieven van 2024 kunnen dan eventueel verwijderd worden door de submap
+2024 te verwijderen. Ze worden in ieder geval niet meer getoond op de webpagina.</p>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="navigatie-menu">Navigatiemenu</h3>
+
+<p>Het navigatiemenu wordt automtisch gegenereerd vanuit “_includes/nav.html”
+gebaseerd op de data in _config.yml.</p>
+
+<p>Hieronder zie je de menudefinitie in “_config.yml”.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#
+# MENU
+#   Een array van menu-items.
+#   "label" is de string die getoond wordt voor het menu-item
+#   "url" is de url waar het menu-item naar wijst
+#   "children" is de lijst van de sub-menu-items 
+#   Als "children" niet leeg is, wordt het hoofd-menu-item geen verwijzing
+#   naar een webpagina, maar wordt het een knop om een dropdown menu te openen.
+menu:
+  - label: "Welkom"
+    url: "/"
+    children: ""
+  - label: "Agenda"
+    url: "/maandagenda.html"
+    children: ""
+  - label: "Terugkerend"
+    url: "/terugkerend.html"
+    children: ""
+  - label: "Activiteiten"
+    url: ""
+    children:
+      - label: "Terugkerende activiteiten"
+        url: "/terugkerend.html"
+      - label: "Biljart"
+        url: "/activiteiten/biljart/"
+      - label: "Bridge"
+        url: "/activiteiten/bridge/"
+      - label: "Petanque"
+        url: "/activiteiten/petanque/"
+      - label: "Hobby &amp; Handwerk"
+        url: "/activiteiten/hobby-handwerk/"
+      - label: "Plezierfietsers"
+        url: "/activiteiten/plezier-fietsers/"
+      - label: "Sportieve fietsers"
+        url: "/activiteiten/sportieve-fietsers/"
+  - label: "Nieuwsbrieven"
+    url: "/nieuwsbrieven.html/"
+    children: ""
+  - label: "Allerlei"
+    url: ""
+    children:
+      - label: "Contactpersonen"
+        url: "/allerlei/contactpersonen/"
+      - label: "Verslagen"
+        url: "/allerlei/verslagen/"
+      - label: "Geschiedenis"
+        url: "/allerlei/geschiedenis/"
+      - label: "Privacy"
+        url: "/allerlei/privacy/"
+      - label: "Verwijzingen"
+        url: "/allerlei/verwijzingen/"
+# Een apart menu MENU-ONTWIKKELING wordt normaal niet getoond. Het verschijnt
+# alleen als in de browser adresbalk expliciet https://okraranst.be/ontwikkeling
+# wordt opgeroepen.
+menu-ontwikkeling:
+  - label: "Home"
+    url: "/"
+    children: ""
+  - label: "Ontwikkeling"
+    url: ""
+    children:
+      - label: "Index"
+        url: "/ontwikkeling/"
+      - label: "Over deze website"
+        url: "/ontwikkeling/over-website.html"
+      - label: "Test Liquid"
+        url: "/ontwikkeling/test.html"
+</code></pre></div></div>
+
+<p>Hieronder zie je de code van nav.html. Buiten Liquid bevat het ook javascript
+om een dropdown menu te openen als de gebruiker op het parent-menu klikt en het
+te sluiten als de gebruiker ergens buiten het menu klikt.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;nav class="hornav"&gt;
+    {% if page.collection == "ontwikkeling" -%}
+        {% assign menu-list = site.menu-ontwikkeling -%}
+    {% else -%}
+        {% assign menu-list = site.menu -%}
+    {% endif -%}
+    {% for item in menu-list -%}
+        {% if item.children == "" -%}
+            &lt;a href="{{ item.url | relative_url -}}" class="hor-item"&gt;{{ item.label -}}&lt;/a&gt;
+        {% else -%}
+            &lt;div class="dropdown"&gt;
+                &lt;button class="hor-item dropbtn"
+                onclick="document.getElementById('dropdown-{{ item.label -}}').classList.toggle('show');"&gt;
+                    {{ item.label -}}
+                &lt;/button&gt;
+                &lt;div id="dropdown-{{ item.label -}}" class="dropdown-content"&gt;
+                    {% for child in item.children -%}
+                        &lt;a href="{{ child.url | relative_url -}}" class="vert-item" &gt;{{ child.label -}}&lt;/a&gt;
+                    {% endfor -%}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        {% endif -%}
+    {% endfor -%}
+&lt;/nav&gt;
+
+&lt;script type="text/javascript" &gt;
+// Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+        for (i = 0; i &lt; dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+      }
+    }
+&lt;/script&gt;
+</code></pre></div></div>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="relative-url"><em>baseurl</em> en <em>relative_url</em></h3>
+
+<p>Stel bv. dat we de website niet zouden installeren op https://okraranst.be/ maar
+op https://okraranst.be/experiment/.</p>
+
+<p>Als je niets verandert aan de website, zullen alle interne verwijzingen mislukken.
+D.w.z. het navigatie menu werkt niet meer en de webserver vindt de foto’s niet meer.</p>
+
+<p>Jekyll heeft een zeer intelligente oplossing daarvoor.</p>
+
+<p>Er is namelijk een configuratieparameter <em>baseurl</em> in “_config.yml”.</p>
+
+<p>Initieel staat er:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseurl: "" # the subpath of your site, e.g. /blog
+</code></pre></div></div>
+
+<p>Als de website op https://okraranst.be/experiment/ gaat komen moet je invullen:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseurl: "/experiment"
+</code></pre></div></div>
+
+<p>Dat werkt maar als je bij de interne verwijzingen een speciale functie van Jekyll
+gebruikt. Stel dat ik een foto wil tonen op een webpagina:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="/assets/bijlagen/home/Ranst-centrum.png" class="inline-right"&gt;
+</code></pre></div></div>
+
+<p>Maar als ik de website verplaats naar de submap “/experiment” zal deze foto niet
+gevonden worden want in de hoofdmap van de webserver is er geen map
+“/assets” of alleszins niet de juiste. Ik zou de html dan moeten veranderen naar:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="/experiment/assets/bijlagen/home/Ranst-centrum.png" class="inline-right"&gt;
+</code></pre></div></div>
+
+<p>Het zou een hele klus zijn om alle interne verwijzingen te veranderen.</p>
+
+<p>Als je die html bij het ontwerp schrijft als volgt</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="{{ "/assets/bijlagen/home/Ranst-centrum.png" | relative_url }}" class="inline-right"&gt;
+</code></pre></div></div>
+<p>dan zal die Liquid code de baseurl (/experiment) vóór de opgegeven url plakken.</p>
+
+<p>Je vindt de uitleg daarvoor hier: <a href="https://jekyllrb.com/docs/liquid/filters/" target="_blank">Liquid Filters</a>.</p>
+
+<p>Verplaatsen van de website is dus alleen maar de baseurl aanpassen en de website
+opnieuw genereren met Jekyll.</p>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="permalink">Permalink</h3>
+
+<p>Het standaard gedrag van Jekyll bij het bouwen van de website is dat alle
+bronbestanden worden omgezet naar een html-bestand op basis van hun sjabloon. Ze
+worden dan weggeschreven in de map “_site” of submappen daarvan. Een bronbestand
+dat in de submap “_activiteiten” staat zal op “_site” worden geplaatst in de
+submap “activiteiten”. Het bronbestand van de pagina over petanque staat op
+“_activiteiten/petanque.md” en zal door Jekyll, na omzetting naar html
+geschreven worden in “_site/activiteiten/petanque.html”.</p>
+
+<p>Dat betekent dat de URL naar de webpagina voor petanque de volgende is:</p>
+
+<p>URL: https://okraranst.be/activiteiten/petanque.html</p>
+
+<p>Sommige mensen beschouwen zo’n URL lelijk vanwege “.html”.</p>
+
+<p>Jekyl heeft daarvoor het concept <em>permalink</em> ontwikkeld. Zie
+<a href="https://jekyllrb.com/docs/permalinks/" target="_blank">Permalinks</a>.</p>
+
+<p>Je kunt in het bronbestand “_activiteiten/petanque.md” de volgende front matter
+ zetten:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: default
+title: "Petanque"
+foto: "/assets/bijlagen/activiteiten/petanque/OkraPetanque_01.jpg"
+permalink: "/activiteiten/petanque/"
+---
+</code></pre></div></div>
+
+<p>Als Jekyll de website genereert, dan schrijft hij de genereerde html niet in</p>
+
+<p>_site/activiteiten/petanque.html</p>
+
+<p>maar in</p>
+
+<p>_site/activiteiten/petanque/index.html</p>
+
+<p>Daardoor wordt de URL de volgende:</p>
+
+<p>URL: https://okraranst.be/activiteiten/petanque</p>
+
+<p>Als je in elk bronbestand zo’n permalink moet zetten wordt dat nogal omslachtig.</p>
+
+<p>Jekyll heeft daar weer een mooie oplossing voor. Je kunt <em>permalink</em> niet alleen
+definiëren in de front matter van de bronbestanden, maar ook in “_config.yml”.</p>
+
+<p>Daarin kun je een <em>permalink</em> definitie zetten die een soort default is voor alle
+webpagina’s en je kunt een meer specifieke <em>permalink</em> definitie zetten voor
+elke <em>collection</em>. Een <em>collection</em> is een verzameling van webpagina’s waarvan
+de bronbestanden in een submap van de hoofdmap zitten. Deze submappen moeten
+altijd een naam hebben die begint met een underscore (_). Hieronder zie je
+de collections definitie voor deze website en de permalink definitie voor
+elk daarvan.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#
+# PERMALINK kan bepaald worden op niveau van de site, van de collections en
+# op niveau van de webpagina's in de front matter.
+# permalink bepaalt de mappenstructuur van de gegenereerde website (_site/).
+# De mappenstructuur bepaalt impliciet de URLs van de webpagina's.
+# Zie https://jekyllrb.com/docs/permalinks/ voor meer uitleg.
+#
+# Ik heb hier gekozen voor een definitie op niveau van de page collections.
+# permalink: op niveau van de site heb ik niet gebruikt.
+#
+# Hier worden page COLLECTIONS gedefinieerd. Dat zijn webpagina's waarvan de
+# bronbestanden in een submap worden geplaatst en die op een of andere manier
+# samenhoren. Voor de hier gedefinieerde collections moeten de bronbestanden
+# geschreven worden in de submappen "_activiteiten", "_allerlei", "_posts" en
+# "_drafts" en "_ontwikkeling"
+#
+# Belangrijke opmerking: de "/" aan het einde van de permalink definitie is
+# belangrijk. Als die ontbreekt moet de url wel de extensie ".html" bevatten.
+collections:
+    home:
+        output: true
+        permalink: /:name:output_ext
+    activiteiten:
+        output: true
+        permalink: /:collection/:name/
+    allerlei:
+        output: true
+        permalink: /:collection/:name/
+    posts:
+        output: true
+        permalink: /:collection/:name/
+    ontwikkeling:
+        output: true
+        permalink: /:collection/:name:output_ext
+    drafts:
+        output: false
+        permalink: /:collection/:name/
+</code></pre></div></div>
+
+<p>De “activiteiten” collection bestaat uit de bronbestanden in de submap
+“_activiteiten”. De <em>permalink</em> definitie is “/:collection/:name/”. Hierin
+betekent “:collection” de naam van de collection en “:name” de filenaam van
+het bronbestand maar zonder de extensie. Voor het bronbestand “biljart.md” in de
+submap “_activiteiten” zal de URL dus “/activiteiten/biljart” worden. Dat betekent
+dat Jekyll de webpagina zal wegschrijven in “_site” als
+“_site/activiteiten/biljart/index.html”.</p>
+
+<p>Verder heb ik een permalink definitie op site niveau gezet in “_config.yml” die
+van toepassing is voor de bronbestanden die in de hoofdmap staan:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>permalink: /:basename/
+</code></pre></div></div>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+
+<h3 id="verslagen">Verslagen</h3>
+
+<p>Verslagen maken gebruik van het Jekyll concept <em>posts</em>. Daarmee wordt eigenlijk
+“blog posts” bedoeld. Het verschil tussen een gewone webpagina en een <em>post</em> is
+het volgende.</p>
+
+<p>Een post is een webpagina waarbij de datum belangrijk is. Het is bv. een
+verslag over een gebeurtenis. Het is in ieder geval iets waarbij de datum waarop
+het gepubliceerd wordt belangrijk is.</p>
+
+<p>In een Jekyll project worden de bronbestanden van posts in de map “_posts”
+geplaatst. Jekyll veronderstelt dat de volgende conventie wordt gevolgd
+voor de naam van die bronbestanden:</p>
+
+<p>YYYY-MM-DD-naam-van-het-verslag.md</p>
+
+<p>Jekyll plaatst de daaruit gegenereerde webpagina standaard in</p>
+
+<p>_site/YYYY/MM/DD/naam-van-het verslag.html</p>
+
+<p>Door de hierboven gedefinieerde <em>permalink</em> voor de <em>posts</em> collection wordt dat
+echter:</p>
+
+<p>_site/posts/YYY-MM-DD-naam-van-het-verslag.html</p>
+
+<p>De datum van het verslag is impliciet een front matter gegeven dat kan worden
+gebruikt in Liquid met “page.date”.</p>
+
+<p>Jekyll biedt daarenboven nog de mogelijkheid om <em>tags</em> en <em>categories</em> toe te
+kennen aan posts, maar dat heb ik tot nu toe nog niet gebruikt. Zie
+<a href="https://jekyllrb.com/docs/posts/" target="_blank">Posts</a>
+in de Jekyll documentatie.</p>
+
+<p><a href="#inhoud">Terug naar inhoudstafel</a></p>
+</main>
+            <footer>
+                <hr>
+<div id="footer-row">
+    <div id="footer-column-1">
+        <a href="https://jekyllrb.com/" target="_blank" style="padding: 0; border-radius: 0; background-color: white;">
+            <img src="/assets/bijlagen/jekyll-logo" alt="Jekyll Logo" style="margin: 0; width: 80px; height: auto;">
+        </a>
+        <p>Statische website generator</p>
+    </div>
+    <div id="footer-column-2">
+        <p><a href="https://github.com/jekyll/jekyll" > GitHub Pages</a></p>
+    </div>
+</div>
+   <div class="auteur">
+Website gemaakt door Wim Herremans met <a href="https://jekyllrb.com" target="_blank">Jekyll</a>
+   </div>
+</footer>
+        </div>
+  </body>
+</html>
