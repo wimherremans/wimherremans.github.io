@@ -1,6 +1,0 @@
-<div class="fotoalbum">
-    {% assign album-images = site.static_files | where: "album", include.album -%}
-    {% for myimage in album-images -%}
-        <a href="{{ myimage.path | relative_url -}}" target="_self"> <img src="{{ myimage.path | relative_url -}}" alt="{{ myimage.name -}}"></a>
-    {% endfor -%}
-</div>
