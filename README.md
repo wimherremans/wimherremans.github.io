@@ -1,2 +1,5 @@
 # wimherremans.github.io
-Mijn account zou nu OK zijn! Werkelijk?
+Dit is een test van jekyll op GitHub Pages.
+
+De website is "under construction".
+
