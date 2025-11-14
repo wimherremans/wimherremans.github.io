@@ -1,0 +1,12 @@
+---
+title: "Ontwikkeling"
+ontwikkeling: true
+auteur: "Wim Herremans"
+layout: default
+---
+<p>Hier staan alle pagina's van de collection "ontwikkeling".</p>
+
+{% assign ontwikkeling = site.ontwikkeling -%}
+{% for page in ontwikkeling -%}
+    <p><a href="{{ page.url | relative_url -}}" >{{ page.title -}}</a></p>
+{% endfor -%}

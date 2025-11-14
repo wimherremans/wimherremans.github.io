@@ -1,0 +1,251 @@
+---
+---
+/* Kleur voor elementen die de aandacht moeten trekken */
+$opvallende-kleur: #8C1717;
+/* Kleur voor gekozen (geselecteerde) elementen */
+$gekozen-kleur: #B12F2F; /* lichter rood */
+
+/* Algemene instellingen */
+
+body {
+    background: white;
+    color: black;
+    font-family: sans-serif;
+    padding: 1rem 0 1rem 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $opvallende-kleur;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* img */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+img.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.inline-left {
+    display: inline;
+    float: left;
+    margin-left: 0;
+    width: 50%;
+    height: auto;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+}
+
+img.inline-right {
+    display: inline;
+    float: right;
+    margin-right: 0;
+    height: auto;
+    width: 50%;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+table {
+    border-style: solid;
+    border-width: thin;
+    border-color: gray;
+    border-collapse: collapse;
+
+    th {
+        border-style: solid;
+        border-width: thin;
+        border-color: gray;
+        font-weight: bold;
+        text-align: center;
+        padding: 0.5rem;
+    }
+
+    td {
+        border-style: solid;
+        border-width: thin;
+        border-color: gray;
+        padding: 0.5rem;
+    }
+}
+
+/* de container van de hele pagina */
+
+#whole-page {
+    display: flex;
+    flex-direction: column;
+    max-width: 90vw;
+    align-items: stretch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Rij van de header met logo en titel */
+
+#header-row {
+    display: flex;
+    flex-direction: row;
+
+    a {
+        color: $opvallende-kleur;
+        background-color: white;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline ;
+    }
+}
+
+#logo {
+    width: 99px;
+    height: 92px;
+}
+/* navigation bar */
+
+nav.hornav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: $opvallende-kleur;
+}
+
+.hor-item {
+    color: white;
+    font-weight: normal;
+    font-family: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    background-color: $opvallende-kleur;
+    padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+}
+
+.hor-item:hover {
+    background-color: $gekozen-kleur;
+    color: white;
+    text-decoration: none;
+}
+
+/* dropdown menus */
+
+.dropbtn {
+    border-style: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+/* Dropdown content (hidden by default) */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $opvallende-kleur;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+.vert-item {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    color: white;
+    text-decoration: none;
+    padding: 0.3rem 1rem 0.3rem 1rem;
+}
+.vert-item:hover {
+    background-color: $gekozen-kleur;
+    color: white;
+}
+
+/* show the dropdown content. This class is added or removed by Java Script
+ when clicks occur. See nav.html */
+
+.show {
+    display: flex;
+    flex-direction: column;
+}
+/* page conten */
+#page-content {
+    display: block;
+}
+/* footer */
+
+#footer-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#footer-column-1 {
+    width: 50%;
+}
+#footer-column-2 {
+    width: 50%;
+}
+
+div.auteur {
+   font-size: 0.8rem;
+   text-align: center;
+}
+
+.contact-form {
+    display: grid;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    grid-template-columns: min-content auto;
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5rem;
+}
+
+.contact-item {
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+div.fotoalbum {
+    display: grid;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    grid-template-columns: auto auto auto;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    a {
+        background-color: white;
+        text-decoration-line: none;
+    }
+}
+
+#nieuwsbrieven {
+    display: flex;
+    flex-direction: row;
+    
+    div.kolom {
+        width: 50%;
+    }
+}
+
+#inhoud-ontwikkeling {
+    display: inline;
+    float: left;
+    margin: 0 2rem 1rem 2rem;
+    border-style: solid;
+    border-width: thin;
+    padding: 1rem;
+}
+
