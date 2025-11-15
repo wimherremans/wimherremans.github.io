@@ -44,6 +44,24 @@ defaults:
         path: "assets/bijlagen/posts/2025-10-23-somme/album"
     values:
         album: "2025-10-23-somme"
+  - scope:
+        path: "_ontwikkeling"
+    values:
+        foto: ""
+        auteur: ""
+        layout: default
+  - scope:
+        path: ""
+    values:
+        foto: ""
+        auteur: ""
+        layout: default
+  - scope:
+        path: "_posts"
+    values:
+        foto: ""
+        auteur: "Onbekend"
+        layout: default
 #
 # MENU
 #   Een array van menu-items.

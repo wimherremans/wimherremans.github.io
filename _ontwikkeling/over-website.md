@@ -1,7 +1,6 @@
 ---
 title: "Over de ontwikkeling van deze website"
 layout: default
-auteur: "Wim Herremans"
 ---
 <div id="inhoud-ontwikkeling">
     <h3 id="inhoud">Inhoudstafel</h3>
